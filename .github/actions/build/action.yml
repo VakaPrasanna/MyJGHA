@@ -1,0 +1,9 @@
+name: Build Action
+description: Enhanced composite action for Build stage
+inputs: {}
+runs:
+  using: composite
+  steps:
+  - name: Run command 1
+    run: python -m py_compile sources/add2vals.py sources/calc.py
+    shell: bash
