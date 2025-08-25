@@ -1,5 +1,6 @@
 name: CI
 'on':
+  workflow_dispatch:
   push:
     branches:
     - master
@@ -32,3 +33,4 @@ jobs:
     - uses: actions/checkout@v4
     - name: Run Deliver
       uses: ./.github/actions/deliver
+      
