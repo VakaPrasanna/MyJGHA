@@ -19,24 +19,24 @@ jobs:
       uses: ./.github/actions/build
   test:
     runs-on: ubuntu-latest
-    container:
-      image: qnib/pytest
     needs: build
+    container:
+      image: python:3.9-slim
     steps:
     - uses: actions/checkout@v4
-    - name: Install bash
-      run: apk add --no-cache bash
+    - name: Install pytest
+      run: pip install pytest
     - name: Run Test
       uses: ./.github/actions/test
   deliver:
     runs-on: ubuntu-latest
-    container:
-      image: cdrx/pyinstaller-linux:python2
     needs: test
+    container:
+      image: python:3.9-slim
     steps:
     - uses: actions/checkout@v4
-    - name: Install bash
-      run: apk add --no-cache bash
+    - name: Install pyinstaller
+      run: pip install pyinstaller
     - name: Run Deliver
       uses: ./.github/actions/deliver
     
