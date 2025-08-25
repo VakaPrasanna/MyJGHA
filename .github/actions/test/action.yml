@@ -1,0 +1,9 @@
+name: Test Action
+description: Enhanced composite action for Test stage
+inputs: {}
+runs:
+  using: composite
+  steps:
+  - name: Run command 1
+    run: py.test --verbose --junit-xml test-reports/results.xml sources/test_calc.py
+    shell: bash
