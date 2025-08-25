@@ -35,9 +35,11 @@ jobs:
       image: python:3.9-slim
     steps:
     - uses: actions/checkout@v4
-    - name: Install pyinstaller
-      run: pip install pyinstaller
+    - name: Install dependencies
+      run: |
+        apt-get update && apt-get install -y binutils
+        pip install pyinstaller
     - name: Run Deliver
-      uses: ./.github/actions/deliver
+      uses: pyinstaller --onefile sources/add2vals.py
     
       
